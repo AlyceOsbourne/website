@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Page title -->
+    <title>My Portfolio</title>
+</head>
+
+<body>
+<nav>
+    <div>
+
+        <!-- Links -->
+        <ul class="navbar">
+            <li>
+                <a href="/"><span class="nm">H</span>ome</a>
+            </li>
+            <li>
+                <a href="/blog"><span class="nm">B</span>log</a>
+            </li>
+            <li>
+                <a href="/about"><span class="nm">A</span>bout</a>
+            </li>
+            <li>
+                <a href="/contact"><span class="nm">C</span>ontact</a>
+            </li>
+            <li>
+                <a href="https://github.com/AlyceOsbourne/" target="_blank" rel="noopener noreferrer"><span
+                        class="nm">G</span>ithub</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- landing -->
+<div class="landing">
+    <div class="container">
+        <h1>Do you need a developer<span class="qm">?</span></h1>
+        <h3>My name is <span class="nm">{{ name }}</span> and I might be the one you are looking for.</h3>
+        <br>
+    </div>
+</div>
+<!-- github project carousel with controls using jinga for repo in repos, the repos being repos from the github module
+     we need to have controls to scroll through the projects -->
+<div class="carousel-container">
+    {% for repo in repos %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ repo.name }}</h5>
+            <img src="{{ repo.owner.avatar_url }}" alt="avatar" class="avatar">
+            <p class="card-text">{{ repo.description }}</p>
+            <p class="card-text"><small class="text-muted">Last updated {{ repo.updated_at }}</small></p>
+            <p class="card-text"><small class="text-muted">Created {{ repo.created_at }}</small></p>
+            <p class="card-text"><small class="text-muted">Language {{ repo.language }}</small></p>
+            <p class="card-text"><small class="text-muted">Stars {{ repo.stargazers_count }}</small></p>
+            <p class="card-text"><small class="text-muted">Watchers {{ repo.watchers_count }}</small></p>
+            <a href="{{ repo.html_url }}" class="btn btn-primary">Go to repo</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- footer -->
+<footer>
+    <div class="container">
+        <p>© 2020 Alyce Osbourne</p>
+    </div>
+</footer>
+</body>
+<style>
+
+    :root {
+         --main-bg-color: #0f0f0f;
+         --alt-bg-color: #202020;
+         --accent-color: #E4680b;
+         --font-color: #fff;
+         --font-color-alt: #ccc;
+}
+
+    body {
+        background-color: var(--main-bg-color);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav {
+        background-color: var(--alt-bg-color);
+        overflow: hidden;
+        border-bottom: 10px solid var(--accent-color);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    nav div {
+        float: left;
+        width: 100%;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        padding-left: 5%;
+        overflow: hidden;
+        background-color: var(--alt-bg-color);
+
+    }
+
+    nav li {
+        float: left;
+        border: 3px solid var(--accent-color);
+        width: 12%;
+        margin: 10px;
+        padding: 0;
+    }
+
+    nav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 30px;
+        margin: 0;
+    }
+
+    nav li a:hover {
+        background-color: var(--accent-color);
+    }
+
+    <-!- landing styling -->
+
+    .landing {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .landing .container {
+        margin: 3%;
+         background-color: var(--alt-bg-color);
+        border: 10px solid var(--accent-color);
+        border-top-right-radius: 60px;
+        border-bottom-left-radius: 60px;
+    }
+
+    .landing h1 {
+        font-size: 6rem !important;
+        margin: auto;
+        color: white;
+          text-align: center;
+
+    }
+
+    .landing h3 {
+        font-size: 1.8rem !important;
+        color: white;
+          text-align: center;
+    }
+
+    .qm {
+        color: var(--accent-color);
+        font-size: 8rem;
+    }
+
+    .nm {
+        color: var(--accent-color);
+        font-size: 2.3rem;
+    }
+
+    .carousel-container {
+        display: flex;
+        margin: 4%;
+    }
+
+    .carousel-container .card {
+        flex-shrink: 0;
+        width: 30%;
+        margin: 0 auto;
+        scroll-snap-align: center;
+        transition: transform 0.5s;
+    }
+
+    .carousel-container .card:hover {
+        transform: scale(1.2);
+    }
+
+
+    .card-body {
+        padding: 10px;
+        margin: 10px;
+        background-color: var(--alt-bg-color);
+        border: 10px solid var(--accent-color);
+        border-top-right-radius: 60px;
+        border-bottom-left-radius: 60px;
+        height: 100%;
+    }
+
+    .card-title {
+        color: var(--accent-color);
+        font-size: 2rem;
+    }
+
+    .card-text {
+        color: var(--font-color-alt);
+        font-size: 1.2rem;
+    }
+
+    .card-text small {
+        color: var(--font-color-alt);
+        font-size: 1rem;
+    }
+
+    .avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 5px solid var(--accent-color);
+        margin: 0 auto;
+        display: block;
+    }
+
+
+
+
+    footer {
+        background-color: var(--alt-bg-color);
+        border-top: 10px solid var(--accent-color);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 10px;
+    }
+
+    footer p {
+        color: var(--font-color-alt);
+        text-align: center;
+    }
+
+
+</style>
+
+
+</html>
