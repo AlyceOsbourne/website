@@ -162,9 +162,19 @@
           text-align: center;
     }
 
+    .landing:hover ~ .qm {
+        animation: wobble 1s ease-in-out infinite;
+        animation-delay: 1s;
+        animation-direction: alternate;
+    }
+
+
     .qm {
         color: var(--accent-color);
         font-size: 8rem;
+        margin: 0;
+        padding: 0;
+
     }
 
     .nm {
@@ -223,9 +233,6 @@
         margin: 0 auto;
         display: block;
     }
-
-
-
 
     footer {
         background-color: var(--alt-bg-color);
