@@ -11,11 +11,12 @@ dotenv.load_dotenv()
 OWNER_NAME = 'Alyce Osbourne'
 REPO_OWNER = OWNER_NAME.replace(" ", "")
 gh_token = os.getenv("GITHUB_TOKEN")
-gh = github.Github()
+gh = github.Github(gh_token)
 owner = gh.get_user(REPO_OWNER)
 repos = owner.get_repos()
 cache_path = pathlib.Path("cache")
 cache_path.mkdir(exist_ok = True)
+
 
 @cache
 def get_repos_for_user(user):
