@@ -1,11 +1,8 @@
-from functools import cache
-
-import github
-import pickle
-import pathlib
-import datetime
-import dotenv
 import os
+import pathlib
+
+import dotenv
+import github
 
 dotenv.load_dotenv()
 OWNER_NAME = 'Alyce Osbourne'
@@ -18,7 +15,6 @@ cache_path = pathlib.Path("cache")
 cache_path.mkdir(exist_ok = True)
 
 
-@cache
 def get_repos_for_user(user):
     return user.get_repos(sort = "updated", direction = "desc")[0:3]
 
