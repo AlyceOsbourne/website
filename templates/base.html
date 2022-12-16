@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Page title -->
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    {% block head %}    {% endblock %}
+
+</head>
+
+<body>
+<nav>
+    <div>
+        <!-- Links -->
+        <ul class="navbar">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/blog">Blog</a>
+            </li>
+            <li>
+                <a href="/about">About</a>
+            </li>
+            <li>
+                <a href="/contact">Contact</a>
+            </li>
+            <li>
+                <a href="https://github.com/AlyceOsbourne/" target="_blank" rel="noopener noreferrer">Github</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content">
+    {% block content %}    {% endblock %}
+</div>
+<footer>
+    <div class="container">
+        <p>© 2020 Alyce Osbourne</p>
+    </div>
+</footer>
+</body>
+</html>
